@@ -1,3 +1,10 @@
 <template name="MasterLayout">
-	{{> yield}}
+	{{> Header}}
+	<div class="container-fluid">
+        <div class="row main">
+            {{> yield}}	            
+        </div>
+	</div>
+
+	{{> Footer}}
 </template>
