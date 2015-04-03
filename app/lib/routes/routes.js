@@ -9,6 +9,12 @@ Router.configure({
 });
 
 // Routes
+
 Router.route('/', {
-	name :'MyBooks'
+	name: 'MyBooks'
+});
+
+
+Router.route('/add', {
+	name: 'AddBook',
 });
