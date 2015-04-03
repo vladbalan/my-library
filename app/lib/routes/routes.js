@@ -15,6 +15,10 @@ Router.route('/', {
 	, controller: MyBooksListController
 });
 
+Router.route('/other', {
+	name: 'OtherBooks'
+	, controller: OtherBooksListController
+});
 
 Router.route('/add', {
 	name: 'AddBook'
