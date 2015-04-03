@@ -12,9 +12,10 @@ Router.configure({
 
 Router.route('/', {
 	name: 'MyBooks'
+	, controller: MyBooksListController
 });
 
 
 Router.route('/add', {
-	name: 'AddBook',
+	name: 'AddBook'
 });
