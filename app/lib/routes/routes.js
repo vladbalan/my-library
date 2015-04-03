@@ -20,6 +20,11 @@ Router.route('/other', {
 	, controller: OtherBooksListController
 });
 
+Router.route('/checked-out', {
+	name: 'CheckedOutBooks'
+	, controller: CheckedOutBooksListController
+});
+
 Router.route('/add', {
 	name: 'AddBook'
 });

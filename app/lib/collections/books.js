@@ -41,6 +41,7 @@ Meteor.methods({
 		var book = _.extend(attributes, {
 			userId: user._id
 			, checkoutUserId: false
+			, overdue: false
 			, dateCreated: new Date()
 			, dateModified: new Date()
 		});
@@ -51,5 +52,18 @@ Meteor.methods({
 		return {
 			_id: bookId
 		};
+	}, 
+	bookCheckout: function (bookId) {
+		var user = Meteor.user();
+
+		Books.update(bookId, {$set: {checkoutUserId: user._id}}, function(error) {
+			if (error) {
+				// display the error to the user
+				throw new Meteor.Error('invalid-book', error.reason);
+			} else {
+				return true;
+			}
+		});
+		
 	}
 });

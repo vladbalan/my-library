@@ -3,6 +3,13 @@
 		<div class="book">
 			<h4>{{title}}</h4>
 			<em>written by <strong>{{author}}</strong></em>
+			<div class="menu">
+				{{#unless ownsDocument}}
+					{{#unless isCheckedOut}}
+						<button type="button" class="btn btn-xs btn-primary checkout" title="Checkout" aria-label="Checkout"><span class="glyphicon glyphicon-check"></span></button>
+					{{/unless}}
+				{{/unless}}
+			</div>
 		</div>
 	</li>
 </template>
