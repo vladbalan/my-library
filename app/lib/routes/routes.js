@@ -28,3 +28,7 @@ Router.route('/checked-out', {
 Router.route('/add', {
 	name: 'AddBook'
 });
+
+Router.route('/settings', {
+	name: 'Settings'
+});

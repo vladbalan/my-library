@@ -15,6 +15,7 @@ Meteor.methods({
 			userId: user._id
 			, checkoutUserId: false
 			, overdue: false
+			, isPrivate: false
 			, dateCreated: new Date()
 			, dateModified: new Date()
 		});
