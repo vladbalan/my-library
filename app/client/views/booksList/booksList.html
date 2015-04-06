@@ -2,33 +2,15 @@
 	<div class="row">
 		<div class="col-xs-1 col-sm-1 col-md-2 col-lg-2"></div>
 		<div class="col-xs-10 col-sm-10 col-md-8 col-lg-8">
-    		{{> esInput index="books" placeholder="Search..." class="form-control search-input" type="text" value=""}}
+    		<input type="text" placeholder="Search" class="form-control search-input" value="">
 		</div>
 		<div class="col-xs-1 col-sm-1 col-md-2 col-lg-2"></div>
 	</div>
 
-	{{#ifEsInputIsEmpty index="books"}}
-		<ul class="books row">
-			{{#each books}}
-            	{{> Book}}
-			{{/each}}
-		</ul>
-    {{/ifEsInputIsEmpty}}
-
     <ul class="books row">
-        {{#esEach index="books"}}
-	        {{> Book}}
-        {{/esEach}}
+        {{#each books}}
+            {{> Book}}
+        {{/each}}
     </ul>
-
-    {{> esLoadMoreButton index="books"}}
-
-    {{#ifEsHasNoResults index="books"}}
-        <div class="no-results">No results found!</div>
-    {{/ifEsHasNoResults}}
-
-    {{#ifEsIsSearching index="books"}}
-        {{> Loading}}
-    {{/ifEsIsSearching}}
 
 </template>
