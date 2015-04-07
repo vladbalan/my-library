@@ -16,6 +16,11 @@ SearchString.prototype.set = function (newString) {
 	}
 };
 
+// RegExp escape function (http://stackoverflow.com/a/3561711)
+RegExp.escape = function (s) {
+    return s.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');
+};
+
 // Instantiate SearchString in this file's scope
 var searchString = new SearchString();
 
@@ -31,8 +36,8 @@ Template.BooksList.helpers({
 	books: function() {
 		return Books.find({
 			$or: [
-				{title: { $regex: searchString.get(), $options: 'i' }},
-				{author: { $regex: searchString.get(), $options: 'i' }}
+				{title: { $regex: RegExp.escape(searchString.get()), $options: 'i' }},
+				{author: { $regex: RegExp.escape(searchString.get()), $options: 'i' }}
 			]
 		});
 	}
