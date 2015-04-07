@@ -1,12 +1,28 @@
-// Initialize search string
-Template.BooksList.onCreated(function () {
-	this.searchString = new ReactiveVar('');
-});
+// Set up search string dependency
+SearchString = function () {
+	this.searchString = "";
+	this.dep = new Tracker.Dependency;
+}
+
+SearchString.prototype.get = function () {
+	this.dep.depend();
+	return this.searchString;
+};
+
+SearchString.prototype.set = function (newString) {
+	if (newString !== this.searchString) {
+		this.searchString = newString;
+		this.dep.changed();
+	}
+};
+
+// Instantiate SearchString in this file's scope
+var searchString = new SearchString();
 
 // Capture search string changes
 Template.BooksList.events({
 	'keyup .search-input': function(e, tmpl) {
-		tmpl.searchString.set($(e.target).val());
+		searchString.set($(e.target).val());
 	}
 });
 
@@ -15,8 +31,8 @@ Template.BooksList.helpers({
 	books: function() {
 		return Books.find({
 			$or: [
-				{title: { $regex: Template.instance().searchString.get(), $options: 'i' }},
-				{author: { $regex: Template.instance().searchString.get(), $options: 'i' }}
+				{title: { $regex: searchString.get(), $options: 'i' }},
+				{author: { $regex: searchString.get(), $options: 'i' }}
 			]
 		});
 	}
