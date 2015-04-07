@@ -3,32 +3,32 @@
 // The heavy work for each route like data, waitOn, render, etc. all go in their individual route controller files in the client/controllers or server/controllers folders respectively.
 
 Router.configure({
-  	layoutTemplate: 'MasterLayout'
-  	, notFoundTemplate: 'NotFound'
-	, loadingTemplate: 'Loading'
+    layoutTemplate: 'MasterLayout'
+    , notFoundTemplate: 'NotFound'
+    , loadingTemplate: 'Loading'
 });
 
 // Routes
 
 Router.route('/', {
-	name: 'MyBooks'
-	, controller: MyBooksListController
+    name: 'MyBooks'
+    , controller: MyBooksListController
 });
 
 Router.route('/other', {
-	name: 'OtherBooks'
-	, controller: OtherBooksListController
+    name: 'OtherBooks'
+    , controller: OtherBooksListController
 });
 
 Router.route('/checked-out', {
-	name: 'CheckedOutBooks'
-	, controller: CheckedOutBooksListController
+    name: 'CheckedOutBooks'
+    , controller: CheckedOutBooksListController
 });
 
 Router.route('/add', {
-	name: 'AddBook'
+    name: 'AddBook'
 });
 
 Router.route('/settings', {
-	name: 'Settings'
+    name: 'Settings'
 });

@@ -3,7 +3,7 @@
 // 3. Keep track of global (always on) subscriptions on the App.
 
 // App.subscriptions = {
-// 	// add named subscriptions/handles here
+//  // add named subscriptions/handles here
 // };
 
 // App.login = function(..., callback){
@@ -19,9 +19,9 @@
 // });
 
 Handlebars.registerHelper('errorMessage', function(field, templateName) {
-	return Session.get(templateName + 'Validator')[field];
+    return Session.get(templateName + 'Validator')[field];
 });
 
 Handlebars.registerHelper('errorClass', function(field, templateName) {
-	return !!Session.get(templateName + 'Validator')[field] ? 'has-error' : '';
+    return !!Session.get(templateName + 'Validator')[field] ? 'has-error' : '';
 });

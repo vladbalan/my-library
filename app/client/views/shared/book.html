@@ -1,15 +1,15 @@
 <template name="Book">
-	<li class="col-xs-12 col-sm-3 col-md-2">
-		<div class="book">
-			<h4>{{title}}</h4>
-			<em>written by <strong>{{author}}</strong></em>
-			<div class="menu">
-				{{#unless ownsDocument}}
-					{{#unless isCheckedOut}}
-						<button type="button" class="btn btn-xs btn-primary checkout" title="Checkout" aria-label="Checkout"><span class="glyphicon glyphicon-check"></span></button>
-					{{/unless}}
-				{{/unless}}
-			</div>
-		</div>
-	</li>
+    <li class="col-xs-12 col-sm-3 col-md-2">
+        <div class="book">
+            <h4>{{title}}</h4>
+            <em>written by <strong>{{author}}</strong></em>
+            <div class="menu">
+                {{#unless ownsDocument}}
+                    {{#unless isCheckedOut}}
+                        <button type="button" class="btn btn-xs btn-primary checkout" title="Checkout" aria-label="Checkout"><span class="glyphicon glyphicon-check"></span></button>
+                    {{/unless}}
+                {{/unless}}
+            </div>
+        </div>
+    </li>
 </template>

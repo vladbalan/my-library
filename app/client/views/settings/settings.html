@@ -1,15 +1,15 @@
 <template name="Settings">
-	<div class="col-md-12"><h2>Profile Settings</h2></div>
-	<div class="col-md-2"></div>
-	<div class="col-md-8">
-		<div class="btn-group" data-toggle="buttons">
-			<label class="btn btn-success {{#if isVisible}}active{{/if}}">
-				<input type="radio" name="private" autocomplete="off" value="0" checked={{isVisible}}> Visible
-			</label>
-			<label class="btn btn-warning {{#if isPrivate}}active{{/if}}">
-				<input type="radio" name="private" autocomplete="off" value="1" checked={{isPrivate}}> Private
-			</label>
-		</div>
-	</div>
-	<div class="col-md-2"></div>
+    <div class="col-md-12"><h2>Profile Settings</h2></div>
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+        <div class="btn-group" data-toggle="buttons">
+            <label class="btn btn-success {{#if isVisible}}active{{/if}}">
+                <input type="radio" name="private" autocomplete="off" value="0" checked={{isVisible}}> Visible
+            </label>
+            <label class="btn btn-warning {{#if isPrivate}}active{{/if}}">
+                <input type="radio" name="private" autocomplete="off" value="1" checked={{isPrivate}}> Private
+            </label>
+        </div>
+    </div>
+    <div class="col-md-2"></div>
 </template>

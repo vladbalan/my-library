@@ -1,23 +1,23 @@
 <template name="AddBook">
-	<div class="col-md-12"><h2>Add a new book to your library</h2></div>
-	<div class="col-md-2"></div>
-	<div class="col-md-8">
-		<form class="main form create-note-form">
-	    	<div class="form-group {{errorClass 'title' 'AddBook'}}">
-				<div class="controls">
-	         		<input name="title" id="title" type="text" value="" placeholder="Title" class="form-control"/>
-	      			<span class="help-block">{{errorMessage 'title' 'AddBook'}}</span>
-	      		</div>
-		    </div>
-		    <div class="form-group {{errorClass 'author' 'AddBook'}}">
-				<div class="controls">
-	         		<input name="author" id="author" type="text" value="" placeholder="Author" class="form-control"/>
-	      			<span class="help-block">{{errorMessage 'author' 'AddBook'}}</span>
-	      		</div>
-		    </div>
+    <div class="col-md-12"><h2>Add a new book to your library</h2></div>
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+        <form class="main form create-note-form">
+            <div class="form-group {{errorClass 'title' 'AddBook'}}">
+                <div class="controls">
+                    <input name="title" id="title" type="text" value="" placeholder="Title" class="form-control"/>
+                    <span class="help-block">{{errorMessage 'title' 'AddBook'}}</span>
+                </div>
+            </div>
+            <div class="form-group {{errorClass 'author' 'AddBook'}}">
+                <div class="controls">
+                    <input name="author" id="author" type="text" value="" placeholder="Author" class="form-control"/>
+                    <span class="help-block">{{errorMessage 'author' 'AddBook'}}</span>
+                </div>
+            </div>
 
-	    	<input type="submit" value="Add Book" class="btn btn-primary"/>
-		</form>
-	</div>
-	<div class="col-md-2"></div>
+            <input type="submit" value="Add Book" class="btn btn-primary"/>
+        </form>
+    </div>
+    <div class="col-md-2"></div>
 </template>
