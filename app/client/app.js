@@ -25,3 +25,19 @@ Handlebars.registerHelper('errorMessage', function(field, templateName) {
 Handlebars.registerHelper('errorClass', function(field, templateName) {
     return !!Session.get(templateName + 'Validator')[field] ? 'has-error' : '';
 });
+
+//Run every minute
+Meteor.setInterval(function() {
+    Books.find().forEach(function (doc) {
+        if (doc.dateCheckout && ! doc.overdue) {
+            var dateOverdue = moment(doc.dateCheckout).add(TIME_LIMIT, "seconds").toDate();
+            if (moment().isAfter(moment(dateOverdue))) {
+                Meteor.call('bookOverdue', doc._id, function(error, result) {
+                    if (! error) {
+                        
+                    }
+                });
+            }
+        }
+    });
+}, 60000);

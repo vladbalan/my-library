@@ -2,7 +2,10 @@
 // 1. Define global app actions that need to be available on the client and server.
 // 2. Meteor.startup tasks that need to happen on both the client and server.
 
-// check that the userId specified owns the documents
+// Set the default time limit
+TIME_LIMIT = 60 * 1; // seconds * minutes * hours * days
+
+// Check that the userId specified owns the documents
 ownsDocument = function(userId, doc) {
     return doc && doc.userId === userId;
 }

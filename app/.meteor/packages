@@ -12,3 +12,4 @@ ian:accounts-ui-bootstrap-3
 iron:router
 reactive-var
 matb33:collection-hooks
+momentjs:moment

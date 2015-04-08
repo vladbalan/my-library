@@ -1,9 +1,8 @@
 Meteor.methods({
-    bookCheckout: function (bookId, checkin) {
+    bookOverdue: function (bookId) {
         // Set properties
         var set = {
-            checkoutUserId: (checkin) ? false : Meteor.user()._id
-            , dateCheckout: (checkin) ? false : new Date()
+            overdue: true
         };
 
         // Update book

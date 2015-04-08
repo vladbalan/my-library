@@ -6,6 +6,7 @@ Books.before.insert(function (userId, doc) {
     doc.isPrivate = false;
     doc.dateCreated = new Date();
     doc.dateModified = new Date();
+    doc.dateCheckout = false;
 });
 
 // Before update hooks
