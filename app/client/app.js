@@ -34,7 +34,7 @@ Meteor.setInterval(function() {
             if (moment().isAfter(moment(dateOverdue))) {
                 Meteor.call('bookOverdue', doc._id, function(error, result) {
                     if (! error) {
-                        
+                        Meteor.call('notifyOverdue', doc, function(error, result) { if (error) {/* */} });
                     }
                 });
             }

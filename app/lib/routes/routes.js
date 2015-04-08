@@ -6,6 +6,15 @@ Router.configure({
     layoutTemplate: 'MasterLayout'
     , notFoundTemplate: 'NotFound'
     , loadingTemplate: 'Loading'
+    , waitOn: function() {
+        if (!! Meteor.user()) {
+            return [
+                Meteor.subscribe('notifications')
+                , Meteor.subscribe('checkedOutBooks', Meteor.user()._id)
+            ];
+        }
+
+    }
 });
 
 // Routes
