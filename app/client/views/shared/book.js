@@ -9,6 +9,16 @@ Template.Book.events({
             });
         }
     }
+    , 'click .checkin': function(e) {
+        e.preventDefault();
+        if (confirm("Checkin this book?")) {
+            Meteor.call('bookCheckout', this._id, true, function(error, result) {
+                if (error) {
+                    //
+                }
+            });
+        }
+    }
 });
 
 Template.Book.helpers({

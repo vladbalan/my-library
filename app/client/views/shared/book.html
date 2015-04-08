@@ -5,9 +5,11 @@
             <em>written by <strong>{{author}}</strong></em>
             <div class="menu">
                 {{#unless ownsDocument}}
-                    {{#unless isCheckedOut}}
+                    {{#if isCheckedOut}}
+                        <button type="button" class="btn btn-xs btn-success checkin" title="Checkin" aria-label="Checkin"><span class="glyphicon glyphicon-share"></span></button>
+                    {{else}}
                         <button type="button" class="btn btn-xs btn-primary checkout" title="Checkout" aria-label="Checkout"><span class="glyphicon glyphicon-check"></span></button>
-                    {{/unless}}
+                    {{/if}}
                 {{/unless}}
             </div>
         </div>

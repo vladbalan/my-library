@@ -12,7 +12,6 @@ Books.before.insert(function (userId, doc) {
 Books.before.update(function (userId, doc, fieldNames, modifier, options) {
     modifier.$set = modifier.$set || {};
     modifier.$set.dateModified = new Date();
-    modifier.$set.checkoutUserId = userId;
 });
 
 // After insert hooks

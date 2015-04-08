@@ -1,7 +1,8 @@
 Meteor.methods({
-    bookCheckout: function (bookId) {
+    bookCheckout: function (bookId, checkin) {
         // Update book
-        Books.update(bookId, {}, function(error) {
+        checkoutUserId = (checkin) ? false : Meteor.user()._id;
+        Books.update(bookId, {$set: {checkoutUserId: checkoutUserId}}, function(error) {
             if (error) {
                 // display the error to the user
                 throw new Meteor.Error('invalid-book', error.reason);
