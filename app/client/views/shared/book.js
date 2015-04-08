@@ -22,12 +22,18 @@ Template.Book.events({
 });
 
 Template.Book.helpers({
-    ownsDocument: function() {
+    ownsDocument: function () {
         return ownsDocument(Meteor.user()._id, this);
-    }, 
-    isCheckedOut: function() {
+    } 
+    , isCheckedOut: function () {
         if (this.checkoutUserId) {
-            return this.checkoutUserId;
+            return true;
+        }
+        return false;
+    }
+    , isOverdue: function () {
+        if (this.checkoutUserId === Meteor.user()._id && this.overdue) {
+            return true;
         }
         return false;
     }

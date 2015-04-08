@@ -1,5 +1,12 @@
 @import "custom.bootstrap.import.less";
 
+.text-rotate(@deg: 45deg) {
+    -webkit-transform: rotate(@deg);
+    -moz-transform: rotate(@deg);
+    -o-transform: rotate(@deg);
+    writing-mode: lr-tb;
+}
+
 .main {
     margin-top: 70px;
 }
@@ -17,6 +24,26 @@ ul.books {
 
         em {
             color: @gray-light;
+        }
+
+        &.overdue {
+            color: @gray-lighter;
+
+            em {
+                color: @gray-lighter;
+            }
+
+            .overlay {
+                .text-rotate();
+                font-size: 18px;
+                letter-spacing: 10px;
+                margin-left: -28px;
+                margin-top: -30px;
+                position: absolute;
+                text-align: center;
+                text-transform: uppercase;
+                width: 100%;
+            }
         }
     }
 }

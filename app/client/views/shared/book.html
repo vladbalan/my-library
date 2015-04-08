@@ -1,6 +1,6 @@
 <template name="Book">
     <li class="col-xs-12 col-sm-3 col-md-2">
-        <div class="book">
+        <div class="book {{#if isOverdue}}overdue{{/if}}">
             <h4>{{title}}</h4>
             <em>written by <strong>{{author}}</strong></em>
             <div class="menu">
@@ -12,6 +12,9 @@
                     {{/if}}
                 {{/unless}}
             </div>
+            {{#if isOverdue}}
+                <div class="overlay danger">Overdue</div>
+            {{/if}}
         </div>
     </li>
 </template>
