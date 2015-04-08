@@ -1,3 +1,13 @@
+<template name="ValidBook">
+    {{#if ../showCheckedOutBooks}}
+        {{> Book}}
+    {{else}}
+        {{#unless isCheckedOut}}
+            {{> Book}}
+        {{/unless}}
+    {{/if}}
+</template>
+
 <template name="Book">
     <li class="col-xs-12 col-sm-3 col-md-2">
         <div class="book {{#if isOverdue}}overdue{{/if}}">

@@ -4,4 +4,10 @@ CheckedOutBooksListController = BooksListController.extend({
             return Meteor.subscribe('checkedOutBooks', Meteor.user()._id)
         }
     }
+    , data: function() {
+        return {
+            books: Books.find()
+            , showCheckedOutBooks : true
+        };
+    }
 });

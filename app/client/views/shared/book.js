@@ -21,20 +21,26 @@ Template.Book.events({
     }
 });
 
+var isCheckedOut = function () {
+    if (this.checkoutUserId) {
+        return true;
+    }
+    return false;
+};
+
 Template.Book.helpers({
     ownsDocument: function () {
         return ownsDocument(Meteor.user()._id, this);
     } 
-    , isCheckedOut: function () {
-        if (this.checkoutUserId) {
-            return true;
-        }
-        return false;
-    }
+    , isCheckedOut: isCheckedOut
     , isOverdue: function () {
         if (this.checkoutUserId === Meteor.user()._id && this.overdue) {
             return true;
         }
         return false;
     }
+});
+
+Template.ValidBook.helpers({
+    isCheckedOut: isCheckedOut
 });
