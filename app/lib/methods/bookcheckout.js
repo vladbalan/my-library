@@ -16,5 +16,11 @@ Meteor.methods({
             }
         });
         
+        // If book is checked back in, remove any notifications
+        if (checkin) {
+            Notifications.remove({
+                bookId: bookId
+            });
+        }
     }
 });
