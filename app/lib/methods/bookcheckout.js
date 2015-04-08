@@ -4,6 +4,7 @@ Meteor.methods({
         var set = {
             checkoutUserId: (checkin) ? false : Meteor.user()._id
             , dateCheckout: (checkin) ? false : new Date()
+            , overdue: false
         };
 
         // Update book
