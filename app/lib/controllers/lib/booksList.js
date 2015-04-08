@@ -1,6 +1,6 @@
 BooksListController = RouteController.extend({
-    template: 'BooksList',
-        data: function() {
+    template: 'BooksList'
+    , data: function() {
         return {
             books: Books.find()
         };

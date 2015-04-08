@@ -1,0 +1,18 @@
+<template name="AuditLogs">
+    <table class="table">
+        <tr>
+            <th>#</th>
+            <th>BookId</th>
+            <th>Action</th>
+            <th>Date</th>
+        </tr>
+        {{#each auditLogs}}
+            <tr>
+                <td>{{_id}}</td>
+                <td>{{bookId}}</td>
+                <td>{{action}}</td>
+                <td>{{date}}</td>
+            </tr>
+        {{/each}}
+    </table>
+</template>

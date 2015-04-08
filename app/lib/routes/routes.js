@@ -32,3 +32,8 @@ Router.route('/add', {
 Router.route('/settings', {
     name: 'Settings'
 });
+
+Router.route('/audit-logs', {
+    name: 'AuditLogs'
+    , controller: AuditLogsController
+});
