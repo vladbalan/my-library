@@ -1,5 +1,5 @@
 Meteor.methods({
-    bookCheckout: function (bookId, checkin) {
+    bookCheckout: function (docId, checkin) {
         // Set properties
         var set = {
             checkoutUserId: (checkin) ? false : Meteor.user()._id
@@ -8,7 +8,7 @@ Meteor.methods({
         };
 
         // Update book
-        Books.update(bookId, {$set: set}, function(error) {
+        Books.update(docId, {$set: set}, function(error) {
             if (error) {
                 // display the error to the user
                 throw new Meteor.Error('invalid-book', error.reason);
@@ -20,7 +20,7 @@ Meteor.methods({
         // If book is checked back in, remove any notifications
         if (checkin) {
             Notifications.remove({
-                bookId: bookId
+                docId: docId
             });
         }
     }

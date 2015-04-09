@@ -9,8 +9,7 @@ Router.configure({
     , waitOn: function() {
         if (!! Meteor.user()) {
             return [
-                Meteor.subscribe('notifications')
-                , Meteor.subscribe('checkedOutBooks', Meteor.user()._id)
+                Meteor.subscribe('checkedOutBooks', Meteor.user()._id)
             ];
         }
 

@@ -1,14 +1,13 @@
 Meteor.methods({
     notifyOverdue: function (doc) {
         Notifications.upsert({
-            bookId: doc._id
+            docId: doc._id
         }
         , {
-            userId: doc.checkoutUserId,
-            bookId: doc._id,
-            title: doc.title,
-            author: doc.author,
-            read: false
+            userId: doc.checkoutUserId
+            , docId: doc._id
+            , text: 'The book <strong>"' + doc.title + '"</strong> <em>by ' + doc.author + '</em> is overdue!'
+            , read: false
         });
 
         return true;

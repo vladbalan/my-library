@@ -31,9 +31,11 @@
                         <a href="{{pathFor 'Settings'}}"><span class="glyphicon glyphicon-cog"></span> Settings</a>
                     </li>
 
-                    <li class="dropdown">
-                      {{> Notifications}}
-                    </li>
+                    {{> Notifications 
+                        path = pathForCheckedOutBooks
+                        text = notificationText
+                    }}
+                    
                     {{/if}}
                 </ul>
             </div>
