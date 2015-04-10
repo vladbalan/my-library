@@ -45,3 +45,7 @@ Router.route('/audit-logs', {
     name: 'AuditLogs'
     , controller: AuditLogsController
 });
+
+Router.route('/file-reader', {
+    name: 'FileReader'
+});

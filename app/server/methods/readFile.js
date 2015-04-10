@@ -1,0 +1,65 @@
+var formatLogLine = function (string) {
+    return '<span class="log-timestamp"> > [' + timestamp() + ']</span> ' + string + '<br>';
+}
+var timestamp = function () {
+    return moment().format('HH:mm:ss SSS');
+}
+
+var Logger = function () {
+    this.log = '';
+}
+
+Logger.prototype.addLine = function (string) {
+    console.log(formatLogLine(string));
+    this.log += formatLogLine(string);
+}
+
+Logger.prototype.getLog = function () {
+    return this.log;
+}
+
+var logger = new Logger();
+
+var fs = Meteor.require('fs');
+ 
+var readFileAsync = function(type, callback) {
+    fs.readFile('../../../../../public/cool_file.txt', 'utf8', function(err, res) {
+        if (err) {
+            logger.addLine(type + ' fs.readFile error: ' + err);
+        } else {
+            logger.addLine(type + ' fs.readFile result: <br> <pre class="file-contents">' + res + '</pre>');
+            callback && callback( null, res);
+        }
+    });
+}
+ 
+var readFileSync =  Meteor.wrapAsync(readFileAsync); 
+
+Meteor.methods({
+    readFile: function (bookId) {
+        /* */ // <-- These are tests
+        logger.addLine('readFile method called');
+
+        logger.addLine('1. sync before');
+        readFileSync('1. sync');
+        logger.addLine('1. sync after');
+
+        logger.addLine('1. async before');
+        readFileAsync('1. async');
+        logger.addLine('1. async after');
+        
+        logger.addLine('2. sync before');
+        var fileContents = readFileSync('2. sync');
+        logger.addLine('2. sync after');
+        // logger.addLine('2. sync after - returned contents: <br>' + fileContents);
+
+        // other tests ...
+        return logger.getLog();
+        // Comment them out to just print file contents --> /* */
+        
+        // Return formated file contents
+        var fileContents = readFileSync('');
+        return '<pre>' + fileContents + '</pre>';
+        
+    }
+});
