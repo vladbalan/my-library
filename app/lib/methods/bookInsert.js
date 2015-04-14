@@ -10,10 +10,10 @@ Meteor.methods({
         }
 
         // Insert document into collection
-        var bookId = Books.insert(doc);
+        var docId = Books.insert(doc);
 
         return {
-            _id: bookId
+            _id: docId
         };
     }
 });

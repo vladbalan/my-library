@@ -7,6 +7,9 @@ Books.before.insert(function (userId, doc) {
     doc.dateCreated = new Date();
     doc.dateModified = new Date();
     doc.dateCheckout = false;
+    doc.checkouts = 0;
+    doc.topCheckoutDuration = 0;
+    doc.totalCheckoutDuration = 0;
 });
 
 // Before update hooks

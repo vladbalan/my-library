@@ -1,6 +1,19 @@
 // Collection definition
 Books = new Mongo.Collection('books');
 
+// Collection helpers
+Books.helpers({
+    checkouts: function() {
+        return 0;
+    }
+    , topCheckoutDuration: function() {
+        return 0;
+    }
+    , totalCheckoutDuration: function() {
+        return 0;
+    }
+});
+
 // Validate Book fields
 validateBook = function (doc) {
     var validator = {};

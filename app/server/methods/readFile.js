@@ -45,7 +45,7 @@ var readFileSync =  Meteor.wrapAsync(readFileAsync);
 
 // Meteor method declaration
 Meteor.methods({
-    readFile: function (bookId) {
+    readFile: function () {
         logger.reset();
         /* */ // <-- These are tests
         logger.addLine('readFile method called');

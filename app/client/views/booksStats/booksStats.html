@@ -1,0 +1,22 @@
+<template name="BooksStats">
+    <table class="table">
+        <tr>
+            <th>Title</th>
+            <th>Author</th>
+            <th><a href="{{pathFor 'MostPopular'}}">Checkouts</a></th>
+            <th><a href="{{pathFor 'LongestCheckout'}}">Longest Checkout</a></th>
+            <th><a href="{{pathFor 'LongestCheckoutTotal'}}">Total Checkout Duration</a></th>
+            <th><a href="{{pathFor 'Oldest'}}">Oldest</a></th>
+        </tr>
+        {{#each books}}
+            <tr>
+                <td>{{title}}</td>
+                <td>{{author}}</td>
+                <td>{{checkouts}}</td>
+                <td>{{topCheckoutDuration}}</td>
+                <td>{{totalCheckoutDuration}}</td>
+                <td>{{dateCreated}}</td>
+            </tr>
+        {{/each}}
+    </table>
+</template>

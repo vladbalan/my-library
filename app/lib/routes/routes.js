@@ -9,7 +9,7 @@ Router.configure({
     , waitOn: function() {
         if (!! Meteor.user()) {
             return [
-                Meteor.subscribe('checkedOutBooks', Meteor.user()._id)
+                // Meteor.subscribe('checkedOutBooks', Meteor.user()._id)
             ];
         }
 
@@ -48,4 +48,28 @@ Router.route('/audit-logs', {
 
 Router.route('/file-reader', {
     name: 'FileReader'
+});
+
+Router.route('/stats', {
+    name: 'Stats'
+});
+
+Router.route('/most-popular', {
+    name: 'MostPopular'
+    , controller: MostPopularBooksListController
+});
+
+Router.route('/longest-checkout', {
+    name: 'LongestCheckout'
+    , controller: LongestCheckoutBooksListController
+});
+
+Router.route('/longest-checkout-total', {
+    name: 'LongestCheckoutTotal'
+    , controller: LongestCheckoutTotalBooksListController
+});
+
+Router.route('/oldest', {
+    name: 'Oldest'
+    , controller: OldestBooksListController
 });
