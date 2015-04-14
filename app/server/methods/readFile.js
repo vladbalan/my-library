@@ -1,27 +1,34 @@
-var formatLogLine = function (string) {
-    return '<span class="log-timestamp"> > [' + timestamp() + ']</span> ' + string + '<br>';
-}
-var timestamp = function () {
-    return moment().format('HH:mm:ss SSS');
-}
-
+// Define Logger
 var Logger = function () {
-    this.log = '';
+    this.log;
 }
 
 Logger.prototype.addLine = function (string) {
-    console.log(formatLogLine(string));
-    this.log += formatLogLine(string);
+    console.log(this.formatLine(string));
+    this.log += this.formatLine(string);
+}
+
+Logger.prototype.formatLine = function (string) {
+    return '<span class="log-timestamp"> > [' + timestamp() + ']</span> ' + string + '<br>';
 }
 
 Logger.prototype.getLog = function () {
     return this.log;
 }
 
-var logger = new Logger();
+Logger.prototype.reset = function () {
+    this.log = '';
+}
 
-var fs = Meteor.require('fs');
- 
+// Variable declaration
+var logger = new Logger();
+var fs = Npm.require('fs');
+
+// Function declaration 
+var timestamp = function () {
+    return moment().format('HH:mm:ss SSS');
+}
+
 var readFileAsync = function(type, callback) {
     fs.readFile('../../../../../public/cool_file.txt', 'utf8', function(err, res) {
         if (err) {
@@ -32,11 +39,14 @@ var readFileAsync = function(type, callback) {
         }
     });
 }
- 
+
+// Wrap async function
 var readFileSync =  Meteor.wrapAsync(readFileAsync); 
 
+// Meteor method declaration
 Meteor.methods({
     readFile: function (bookId) {
+        logger.reset();
         /* */ // <-- These are tests
         logger.addLine('readFile method called');
 

@@ -18,26 +18,24 @@
 
 // });
 
-Handlebars.registerHelper('errorMessage', function(field, templateName) {
+// Validation helpers
+var getField = function (field, templateName) {
     return Session.get(templateName + 'Validator')[field];
+}
+
+Handlebars.registerHelper('errorMessage', function(field, templateName) {
+    return getField(field, templateName);
 });
 
 Handlebars.registerHelper('errorClass', function(field, templateName) {
-    return !!Session.get(templateName + 'Validator')[field] ? 'has-error' : '';
+    return !!getField(field, templateName) ? 'has-error' : '';
 });
 
-//Run every minute
-Meteor.setInterval(function() {
-    Books.find().forEach(function (doc) {
-        if (doc.dateCheckout && ! doc.overdue) {
-            var dateOverdue = moment(doc.dateCheckout).add(TIME_LIMIT, "seconds").toDate();
-            if (moment().isAfter(moment(dateOverdue))) {
-                Meteor.call('bookOverdue', doc._id, function(error, result) {
-                    if (! error) {
-                        Meteor.call('notifyOverdue', doc, function(error, result) { if (error) {/* */} });
-                    }
-                });
-            }
-        }
-    });
-}, 6000);
+// Enable and disable element
+enableElement = function (selector) {
+    $(selector).removeClass('disabled').removeAttr('disabled');
+}
+
+disableElement = function (selector) {
+    $(selector).addClass('disabled').attr('disabled', true);
+}
